@@ -193,6 +193,10 @@ fun listEmptyCages(cageList: List<String>) {
  */
 fun listAllMonkeysAndCages(cageList: List<String>) {
     println("MONKEYS & CAGES")
+    // Loop getting index and values starting at one
+    for ((i, name) in cageList.withIndex()) if (cageList[i] != EMPTY){
+        println("- ${name.padEnd(lengthOfLongestName(cageList))} (Cage ${i+1})")
+    }
 
 }
 
@@ -201,8 +205,11 @@ fun listAllMonkeysAndCages(cageList: List<String>) {
  * Returns the number of monkeys found in the given cage list
  */
 fun monkeyCount(cageList: List<String>): Int {
-
-    return 0    // REPLACE THIS WITH YOUR CODE!
+    var monkeys: Int = 0
+    for ((i, name) in cageList.withIndex()) if (name != EMPTY){
+        monkeys++
+    }
+    return monkeys
 }
 
 
@@ -210,10 +217,28 @@ fun monkeyCount(cageList: List<String>): Int {
  * Returns the number of cages that are empty in the given cage list
  */
 fun emptyCount(cageList: List<String>): Int {
-
-    return 0    // REPLACE THIS WITH YOUR CODE!
+    var cages: Int = 0
+    for ((i, name) in cageList.withIndex()) if (name == EMPTY){
+        cages++
+    }
+    return cages
 }
 
+ /**
+  * Returns longest monkey names number of characters
+  */
+ fun lengthOfLongestName(cageList: List<String>): Int {
+     // Loop through the list and find the longest name
+     var longestName = ""
+     var longestNameLength = 0
+     for (name in cageList) {
+         if (name.length > longestName.length) {
+             longestName = name
+         }
+         longestNameLength = longestName.length
+     }
+     return longestNameLength
+ }
 
 /**
  * Show all cages from the given list, formatted as a horizontal table:
@@ -227,8 +252,45 @@ fun emptyCount(cageList: List<String>): Int {
  * Tip: the String.padEnd(N) function will help you here
  */
 fun showMonkeyCages(cageList: List<String>) {
-
-    check(false)    // REPLACE THIS WITH YOUR CODE!
+    var cageAsciiLength = 4 + lengthOfLongestName(cageList)
+    var cageNum = cageList.size
+    for ((i) in cageList.withIndex()) {
+        while (cageNum > 0) {
+            print("+")
+            print("-".repeat(cageAsciiLength))
+            cageNum --
+        }
+    }
+    print("+")
+    println("")
+    for ((i) in cageList.withIndex()) {
+        print("| Cage ${(i+1).toString().padEnd(lengthOfLongestName(cageList)-3)} ")
+    }
+    print("|")
+    println("")
+    var cageNum2 = cageList.size
+    for ((i) in cageList.withIndex()) {
+        while (cageNum2 > 0) {
+            print("+")
+            print("-".repeat(cageAsciiLength))
+            cageNum2--
+        }
+    }
+    print("+")
+    println("")
+    for (name in cageList) {
+        print("| ${name.padEnd(lengthOfLongestName(cageList)+3)}")
+    }
+    print("|")
+    println("")
+    var cageNum3 = cageList.size
+    for ((i) in cageList.withIndex()) {
+        while (cageNum3 > 0) {
+            print("+")
+            print("-".repeat(cageAsciiLength))
+            cageNum3 --
+        }
+    }
 }
 
 
