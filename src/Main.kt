@@ -291,6 +291,8 @@ fun showMonkeyCages(cageList: List<String>) {
             cageNum3 --
         }
     }
+    print("+")
+    println("")
 }
 
 
