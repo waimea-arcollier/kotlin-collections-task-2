@@ -299,8 +299,9 @@ fun showMonkeyCages(cageList: List<String>) {
  */
 fun clearCage(cageList: MutableList<String>, cageNum: Int) {
     println("--- Clearing cage $cageNum")
-
-    check(false)    // REPLACE THIS WITH YOUR CODE!
+    println("--- ∙∙∙")
+    println("--- Cage $cageNum cleared")
+    cageList[cageNum - 1] = EMPTY
 }
 
 
@@ -312,8 +313,11 @@ fun clearCage(cageList: MutableList<String>, cageNum: Int) {
  */
 fun swapCages(cageList: MutableList<String>, cageNum1: Int, cageNum2: Int) {
     println("<-> Swapping cages $cageNum1 and $cageNum2")
+    var firstMonkey =cageList[cageNum1 - 1]
+    var secondMonkey = cageList[cageNum2 - 1]
+    cageList[cageNum2 - 1] = firstMonkey
+    cageList[cageNum1 - 1] = secondMonkey
 
-    check(false)    // REPLACE THIS WITH YOUR CODE!
 }
 
 
